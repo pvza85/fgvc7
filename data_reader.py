@@ -8,7 +8,7 @@ def get_class(row):
             return c[0]
 
 
-def get_generators():
+def get_generators(batch_size=128):
     image_folder = 'data/images/'
     train_data = pd.read_csv('data/train.csv')
     test_data = pd.read_csv('data/test.csv')
@@ -41,7 +41,7 @@ def get_generators():
         x_col="x_col",
         y_col="y_col",
         target_size=(224, 224),
-        batch_size=32,
+        batch_size=batch_size,
         class_mode='categorical')
 
     validation_generator = test_datagen.flow_from_dataframe(
@@ -49,7 +49,7 @@ def get_generators():
         x_col="x_col",
         y_col="y_col",
         target_size=(224, 224),
-        batch_size=32,
+        batch_size=batch_size,
         class_mode='categorical')
 
     return train_generator, validation_generator
