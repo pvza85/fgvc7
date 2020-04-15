@@ -1,0 +1,13 @@
+CRITICAL : 15/04/2020 04:57:12 PM : Start training mobilenet for 20 epochs.
+CRITICAL : 15/04/2020 05:25:52 PM : Finish training mobilenet.
+CRITICAL : 15/04/2020 05:25:52 PM : Start predicting with mobilenet from model: models/mobilenet/weights-09-0.791.hdf5.
+CRITICAL : 15/04/2020 05:27:44 PM : Finished predicting with mobilenet.
+CRITICAL : 15/04/2020 05:27:49 PM : Start training nasnet_mobile for 20 epochs.
+CRITICAL : 15/04/2020 05:56:09 PM : Finish training nasnet_mobile.
+CRITICAL : 15/04/2020 05:56:09 PM : Start predicting with nasnet_mobile from model: models/nasnet_mobile/weights-05-0.505.hdf5.
+CRITICAL : 15/04/2020 05:58:41 PM : Finished predicting with nasnet_mobile.
+CRITICAL : 15/04/2020 05:58:46 PM : Start training inception for 20 epochs.
+CRITICAL : 15/04/2020 06:12:58 PM : Finish training inception.
+CRITICAL : 15/04/2020 06:12:58 PM : Start predicting with inception from model: models/inception/weights-01-0.473.hdf5.
+CRITICAL : 15/04/2020 06:16:02 PM : Finished predicting with inception.
+CRITICAL : 15/04/2020 06:16:07 PM : Start training xception for 20 epochs.

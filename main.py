@@ -1,8 +1,5 @@
-#import models
-#import data_reader
-#import utils
-#import train
-#import predict
+import train
+import predict
 import sys
 
 
@@ -18,9 +15,8 @@ import sys
 
 
 def run(model_name, epochs):
-    print(f'model_name: {model_name}')
-    print(f'epoch num: {epochs}')
-    print('***************\n')
+    train.train(model_name=model_name, epochs=epochs)
+    predict.predict(model_name=model_name)
 
 
 if __name__ == '__main__':
