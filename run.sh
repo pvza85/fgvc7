@@ -1,0 +1,9 @@
+python -W ignore main.py inception 20
+python -W ignore main.py vgg 20
+python -W ignore main.py xception 20
+python -W ignore main.py resnet 20
+python -W ignore main.py mobilenet 20
+python -W ignore main.py densenet 20
+python -W ignore main.py inception_resnet 20
+python -W ignore main.py nasnet_mobile 20
+python -W ignore main.py nasnet_large 20

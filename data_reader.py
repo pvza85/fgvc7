@@ -8,14 +8,14 @@ def get_class(row):
             return c[0]
 
 
-def get_generators(batch_size=128):
+def get_generators(batch_size=32, input_size=224, seed=1988):
     image_folder = 'data/images/'
     train_data = pd.read_csv('data/train.csv')
     test_data = pd.read_csv('data/test.csv')
     sample_submission = pd.read_csv('data/sample_submission.csv')
 
     validation_ratio = 0.1
-    train_df = train_data.sample(frac=1.0).copy()
+    train_df = train_data.sample(frac=1.0, random_state=seed).copy()
     train_df['x_col'] = train_df['image_id'].apply(lambda x: f"data/images/{x}.jpg")
     train_df['y_col'] = train_df.apply(get_class, axis=1)
     train_df = train_df[['x_col', 'y_col']]
@@ -27,6 +27,7 @@ def get_generators(batch_size=128):
     test_df = test_data.copy()
     test_df['x_col'] = test_df['image_id'].apply(lambda x: f"data/images/{x}.jpg")
     test_df = test_df[['x_col']]
+    test_df['y_col'] = 'healthy'
 
     train_datagen = ImageDataGenerator(
         rescale=1. / 255,
@@ -40,7 +41,7 @@ def get_generators(batch_size=128):
         dataframe=train_df,
         x_col="x_col",
         y_col="y_col",
-        target_size=(224, 224),
+        target_size=(input_size, input_size),
         batch_size=batch_size,
         class_mode='categorical')
 
@@ -48,10 +49,18 @@ def get_generators(batch_size=128):
         dataframe=validation_df,
         x_col="x_col",
         y_col="y_col",
-        target_size=(224, 224),
+        target_size=(input_size, input_size),
         batch_size=batch_size,
         class_mode='categorical')
 
-    return train_generator, validation_generator
+    test_generator = test_datagen.flow_from_dataframe(
+        dataframe=test_df,
+        x_col="x_col",
+        y_col="y_col",
+        target_size=(input_size, input_size),
+        batch_size=batch_size,
+        class_mode='categorical')
+
+    return train_generator, validation_generator, test_generator
 
     
